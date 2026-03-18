@@ -1156,8 +1156,8 @@ public partial class BetaSharp
 
                 Display.setDisplayMode(Display.getDesktopDisplayMode());
                 Display.setFullscreen(true);
-                displayWidth = Display.getDisplayMode().getWidth();
-                displayHeight = Display.getDisplayMode().getHeight();
+                displayWidth = Display.getWidth();
+                displayHeight = Display.getHeight();
                 if (displayWidth <= 0)
                 {
                     displayWidth = 1;

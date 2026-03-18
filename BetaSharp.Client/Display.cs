@@ -352,8 +352,6 @@ public static unsafe class Display
     /// </summary>
     public static int getWidth()
     {
-        if (isFullscreen())
-            return _currentMode.getWidth();
         return _window?.Size.X ?? _currentMode.getWidth();
     }
 
@@ -362,8 +360,6 @@ public static unsafe class Display
     /// </summary>
     public static int getHeight()
     {
-        if (isFullscreen())
-            return _currentMode.getHeight();
         return _window?.Size.Y ?? _currentMode.getHeight();
     }
 

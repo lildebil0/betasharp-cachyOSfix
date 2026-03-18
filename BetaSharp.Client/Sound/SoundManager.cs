@@ -337,8 +337,16 @@ public class SoundManager
 
         SFML.Audio.Sound sound = getFreeSoundChannel(buffer);
 
-        sound.Position = new Vector3f(x, y, z);
-        sound.RelativeToListener = false;
+        if (buffer.ChannelCount > 1)
+        {
+            sound.RelativeToListener = true;
+            sound.Position = new Vector3f(0.0F, 0.0F, 0.0F);
+        }
+        else
+        {
+            sound.Position = new Vector3f(x, y, z);
+            sound.RelativeToListener = false;
+        }
 
         float minDistance = 16.0F;
         if (volume > 1.0F)

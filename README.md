@@ -61,3 +61,7 @@ Since this issue is specific to the Linux testing environment, please run the ga
 1. Start the game in windowed mode. Ensure the black top bar has disappeared.
 2. The UI scaling behaves correctly alongside the rendered environment.
 3. Try taking an in-game screenshot (`F2`) to confirm images are captured correctly and match your screen dimensions.
+
+## 1.1 Supplemental Fixes (Fullscreen & macOS Sound)
+- **Fullscreen Cursor / Stretch Alignment Fix:** An issue where pressing `F11` would cause the window projection to assume the fullscreen desktop unscaled resolution (stretching the picture and throwing off the GUI cursor scaling coordinates) was caught. Fix was applied in `Display.cs` and `toggleFullscreen` inside `BetaSharp.cs` to correctly retain the window's true logical bounds during viewport resizing.
+- **macOS Sound Effects Mute Fix:** macOS OpenAL instances are known to entirely drop Stereo audio buffers if `RelativeToListener = false` and `Position` properties (spatialization functions) are called on them. Updated `SoundManager.cs` to detect multi-channel sound effect loading, and bypass 3D spatialization for them forcing `RelativeToListener = true`, allowing macOS to successfully play SFML.Audio Sound FX.
